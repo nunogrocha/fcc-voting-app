@@ -5,10 +5,15 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "chart.js": "^1.1.1",
     "classnames": "^2.2.5",
     "meteor-node-stubs": "~0.2.0",
+    "moment": "^2.13.0",
     "react": "^15.1.0",
     "react-addons-pure-render-mixin": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-bootstrap": "^0.29.4",
+    "react-chartjs": "^0.7.3",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1"
   }
 }

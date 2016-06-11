@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
+import { Router } from 'react-router';
 import classnames from 'classnames';
 import { createContainer } from 'meteor/react-meteor-data';
  
@@ -24,7 +25,15 @@ class CreatePoll extends Component {
         return { name: obj, votes: 0 }
       })
       
-      Meteor.call('polls.insert', title, formatOptions);
+      Meteor.call('polls.insert', title, formatOptions, (error, result) => {
+        if(error) {
+        // handle error
+        } else {
+          window.location = '/vote/' + result;
+        }
+      });
+      
+      
     } else {
       this.setState({error: true});
       alert("Fill all fields");
@@ -55,8 +64,8 @@ class CreatePoll extends Component {
                 <label>Options (separated by comma)</label>
                 <textarea className={taskClassName} ref="pollArea" rows="3" onChange={this.handleChange.bind(this)}></textarea>
                 <small class="text-muted">Options: {
-                  this.state.options.map((obj) => {
-                    return <span className="label label-default margin-right-xs">{obj}</span>;
+                  this.state.options.map((obj,key) => {
+                    return <span key={key} className="label label-default margin-right-xs">{obj}</span>;
                   })
                 }</small>
               </fieldset>
@@ -79,6 +88,10 @@ export default createContainer(() => {
   Meteor.subscribe('polls');
   
   return {
-    polls: Polls.find({}, { sort: { createdAt: -1 } }).fetch(),
+    polls: Polls.find({}).fetch(),
   };
 }, CreatePoll);
+
+function rndColor(){
+  return '#' + ("000000" + Math.random().toString(16).slice(2, 8).toUpperCase()).slice(-6);
+}

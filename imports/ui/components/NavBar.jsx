@@ -12,10 +12,13 @@ export default class NavBar extends Component {
         <div className="container">
           <a className="navbar-brand" href="/">VoteApp</a>
           <div className="form-inline pull-xs-right"> 
-            { this.props.currentUser ?
-                <a className="btn btn-success-outline new-poll" href="/create">+ New Poll</a> : ''
+            { this.props.currentUser ? 
+                <div>
+                  <a className="btn btn-success-outline new-poll" href="/create">+ New Poll</a>
+                  <a className="btn btn-primary-outline new-poll" href="/polls">My Polls</a>
+                  <AccountsUIWrapper />
+                </div>: <AccountsUIWrapper />
             }
-            <AccountsUIWrapper />
           </div>
         </div>
       </nav>

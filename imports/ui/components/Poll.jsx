@@ -24,10 +24,10 @@ export default class Poll extends Component {
       }
     });
 
-    var chartOptions = {
+    let chartOptions = {
       segmentShowStroke : true
     };
-    console.log(this.props.poll)
+    
     return (
       <div className="card text-xs-center">
         <div className="card-block">

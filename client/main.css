@@ -27,5 +27,11 @@
 }
 
 .form-control-danger {
-    border-color: #d9534f !important;
+  border-color: #d9534f !important;
+}
+
+canvas {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
